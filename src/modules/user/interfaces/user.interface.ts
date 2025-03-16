@@ -1,13 +1,14 @@
 import {User} from "../models/user.model";
+import {ID} from "../../../share/types/id.type";
 
-interface SearchUserParams {
+export interface SearchUserParams {
     limit: number;
     offset: number;
     email: string;
     name: string;
     contactPhone: string;
 }
-interface IUserService {
+export interface IUserService {
     create(data: Partial<User>): Promise<User>;
     findById(id: ID): Promise<User>;
     findByEmail(email: string): Promise<User>;

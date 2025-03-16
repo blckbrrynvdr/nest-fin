@@ -3,14 +3,15 @@ import { Document } from 'mongoose';
 import {ID} from "../../../share/types/id.type";
 
 
+
 export type UserDocument = User & Document;
 
 @Schema()
 export class User {
-    @Prop({ required: true })
-    _id: ID;
+    // @Prop({ required: true, type: String })
+    // _id: string | ID;
 
-    @Prop({ required: true })
+    @Prop({ required: true, unique: true })
     email: string;
 
     @Prop({ required: true })

@@ -3,6 +3,7 @@ import {Model, Schema} from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { User, UserDocument } from '../models/user.model';
 import { CreateUserDto } from '../dto/create-user.dto';
+import {ID} from "../../../share/types/id.type";
 
 @Injectable()
 export class UsersRepository {
@@ -11,12 +12,12 @@ export class UsersRepository {
         private userModel: Model<UserDocument>,
     ) {}
 
-    async create(createUserDto: CreateUserDto): Promise<UserDocument> {
+    async create(createUserDto: Partial<User>): Promise<UserDocument> {
         const createdUser = new this.userModel(createUserDto);
         return createdUser.save();
     }
 
-    async findById(id: Schema.Types.ObjectId): Promise<UserDocument> {
+    async findById(id: ID): Promise<UserDocument> {
         return this.userModel.findById(id).exec();
     }
 
