@@ -1,30 +1,31 @@
 import {Injectable} from "@nestjs/common";
 import {IHotelService, ISearchHotelParams, IUpdateHotelParams} from "./interfaces/hotel.interface";
-import {HotelModel} from "./models/hotel.model";
-import {Promise} from "mongoose";
+import {HotelModel, THotelDocument} from "./models/hotel.model";
+import {Model} from "mongoose";
 import {ID} from "../../share/types/id.type";
-import {HotelRepository} from "./repositories/hotel.repository";
+import {InjectModel} from "@nestjs/mongoose";
 
 @Injectable()
 export class HotelService implements IHotelService {
     constructor(
-        private hotelRepository: HotelRepository,
+        @InjectModel(HotelModel.name) private hotelModel: Model<THotelDocument>
     ) {
     }
     create(data: Partial<HotelModel>): Promise<HotelModel> {
-        return Promise.resolve(undefined);
+        const createdHotel = new this.hotelModel(data);
+        return createdHotel.save();
     }
 
     findById(id: ID): Promise<HotelModel> {
-        return Promise.resolve(undefined);
+        return this.hotelModel.findById(id).exec();
     }
 
     search(params: ISearchHotelParams): Promise<HotelModel[]> {
-        return Promise.resolve([]);
+        return this.hotelModel.find({ params }).exec();
     }
 
     update(id: ID, data: IUpdateHotelParams): Promise<HotelModel> {
-        return Promise.resolve(undefined);
+        return this.hotelModel.findByIdAndUpdate(id, data).exec();
     }
 
 }
