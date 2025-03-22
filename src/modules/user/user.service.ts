@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { UsersRepository } from './repositories/user.repository';
-import { User, UserDocument, UserSchema } from './models/user.model';
+import { UserModel, UserDocument, UserSchema } from './models/user.model';
 import { CreateUserDto } from './dto/create-user.dto';
 import {IUserService, SearchUserParams} from "./interfaces/user.interface";
 import {ID} from "../../share/types/id.type";
@@ -15,7 +15,7 @@ export class UsersService implements IUserService{
 
     async create(data: CreateUserDto): Promise<UserDocument> {
         console.log('userService create data', data)
-        const userData: Partial<User> = {
+        const userData: Partial<UserModel> = {
             ...data,
             passwordHash: await this.generatePasswordHash(data.password),
         };

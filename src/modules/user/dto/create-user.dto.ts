@@ -1,4 +1,5 @@
 import { IsEmail, IsString, MinLength } from 'class-validator';
+import {TRole} from "../types/user.type";
 
 export class CreateUserDto {
     @IsEmail()
@@ -13,5 +14,5 @@ export class CreateUserDto {
     @IsString()
     contactPhone?: string;
 
-    role: 'client' | 'admin' | 'manager';
+    role: TRole;
 }

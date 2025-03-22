@@ -1,18 +1,17 @@
 import { Injectable } from '@nestjs/common';
-import {Model, Schema} from 'mongoose';
+import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
-import { User, UserDocument } from '../models/user.model';
-import { CreateUserDto } from '../dto/create-user.dto';
-import {ID} from "../../../share/types/id.type";
+import { UserModel, UserDocument } from '../models/user.model';
+import { ID } from '../../../share/types/id.type';
 
 @Injectable()
 export class UsersRepository {
     constructor(
-        @InjectModel(User.name)
+        @InjectModel(UserModel.name)
         private userModel: Model<UserDocument>,
     ) {}
 
-    async create(createUserDto: Partial<User>): Promise<UserDocument> {
+    async create(createUserDto: Partial<UserModel>): Promise<UserDocument> {
         const createdUser = new this.userModel(createUserDto);
         return createdUser.save();
     }

@@ -1,4 +1,5 @@
 import { IsOptional, IsString, Matches } from 'class-validator';
+import {TRole} from "../types/user.type";
 
 export class UpdateUserDto {
     @IsOptional()
@@ -13,5 +14,5 @@ export class UpdateUserDto {
 
     @IsOptional()
     @IsString()
-    role?: 'client' | 'admin' | 'manager';
+    role?: TRole;
 }
