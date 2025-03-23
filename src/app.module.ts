@@ -3,6 +3,8 @@ import {MongooseModule} from "@nestjs/mongoose";
 import {ConfigModule} from "@nestjs/config";
 import { BooksModule } from './books/books.module';
 import {UsersModule} from "./modules/user/user.module";
+import {HotelModel} from "./modules/hotel/models/hotel.model";
+import {ReservationModule} from "./modules/reservation/reservation.module";
 
 
 @Module({
@@ -10,7 +12,9 @@ import {UsersModule} from "./modules/user/user.module";
       ConfigModule.forRoot(),
       MongooseModule.forRoot(process.env.URL_DB),
       BooksModule,
-      UsersModule
+      UsersModule,
+      HotelModel,
+      ReservationModule,
   ],
   controllers: [],
   providers: [],

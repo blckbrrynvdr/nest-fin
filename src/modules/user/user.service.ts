@@ -5,7 +5,7 @@ import {IUserService, SearchUserParams} from "./interfaces/user.interface";
 import {ID} from "../../share/types/id.type";
 import * as bcrypt from 'bcryptjs';
 import {InjectModel} from "@nestjs/mongoose";
-import {Model} from "mongoose";
+import mongoose, {Model, Types} from "mongoose";
 
 
 @Injectable()
@@ -19,9 +19,11 @@ export class UsersService implements IUserService {
         console.log('userService create data', data)
         const userData: Partial<UserModel> = {
             ...data,
+            _id: new Types.ObjectId().toString(),
             passwordHash: await this.generatePasswordHash(data.password),
         };
-        const createdUser = new this.userModel(data);
+        console.log('userService create userData', userData)
+        const createdUser = new this.userModel(userData);
         return createdUser.save();
 
     }
