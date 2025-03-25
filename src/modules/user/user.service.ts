@@ -1,5 +1,5 @@
 import {Injectable} from '@nestjs/common';
-import {User, UserDocument} from './models/user';
+import {UserModel, UserDocument} from './models/user.model';
 import {CreateUserDto} from './dto/create-user.dto';
 import {IUserService, SearchUserParams} from "./interfaces/user.interface";
 import {ID} from "../../share/types/id.type";
@@ -11,13 +11,13 @@ import mongoose, {Model, Types} from "mongoose";
 @Injectable()
 export class UsersService implements IUserService {
     constructor(
-        @InjectModel(User.name) private userModel: Model<UserDocument>,
+        @InjectModel(UserModel.name) private userModel: Model<UserDocument>,
     ) {
     }
 
     async create(data: CreateUserDto): Promise<UserDocument> {
         console.log('userService create data', data)
-        const userData: Partial<User> = {
+        const userData: Partial<UserModel> = {
             ...data,
             _id: new Types.ObjectId().toString(),
             passwordHash: await this.generatePasswordHash(data.password),

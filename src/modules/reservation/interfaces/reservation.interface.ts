@@ -1,5 +1,5 @@
 import {ID} from "../../../share/types/id.type";
-import {Reservation} from "../models/reservation";
+import {ReservationModel} from "../models/reservation.model";
 
 export interface ReservationDto {
     userId: ID;
@@ -15,9 +15,9 @@ export interface ReservationSearchOptions {
     dateEnd: Date;
 }
 export interface IReservation {
-    addReservation(data: ReservationDto): Promise<Reservation>;
+    addReservation(data: ReservationDto): Promise<ReservationModel>;
     removeReservation(id: ID): Promise<void>;
     getReservations(
         filter: ReservationSearchOptions
-    ): Promise<Array<Reservation>>;
+    ): Promise<Array<ReservationModel>>;
 }

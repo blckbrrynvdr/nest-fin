@@ -3,10 +3,10 @@ import {Document, Types} from 'mongoose';
 import {TRole} from "../types/user.type";
 import {ID} from "../../../share/types/id.type";
 
-export type UserDocument = User & Document;
+export type UserDocument = UserModel & Document;
 
 @Schema()
-export class User {
+export class UserModel {
     @Prop({required: true, unique: true, type: Types.ObjectId })
     _id: ID;
 
@@ -26,4 +26,4 @@ export class User {
     role: TRole;
 }
 
-export const UserSchema = SchemaFactory.createForClass(User);
+export const UserSchema = SchemaFactory.createForClass(UserModel);

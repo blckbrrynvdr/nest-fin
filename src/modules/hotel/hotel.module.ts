@@ -1,14 +1,14 @@
-import {Hotel, HotelSchema} from "./models/hotel";
+import {HotelModel, HotelSchema} from "./models/hotel.model";
 import {HotelService} from "./hotel.service";
 import {HotelRoomService} from "./hotel-room.service";
-import {HotelRoom, HotelRoomSchema} from "./models/hotel.room";
+import {HotelRoomModel, HotelRoomSchema} from "./models/hotel-room.model";
 import {MongooseModule} from "@nestjs/mongoose";
 import {Module} from "@nestjs/common";
 
 @Module({
     imports: [
-        MongooseModule.forFeature([{name: Hotel.name, schema: HotelSchema}]),
-        MongooseModule.forFeature([{name: HotelRoom.name, schema: HotelRoomSchema}]),
+        MongooseModule.forFeature([{name: HotelModel.name, schema: HotelSchema}]),
+        MongooseModule.forFeature([{name: HotelRoomModel.name, schema: HotelRoomSchema}]),
     ],
     controllers: [],
     providers: [HotelService, HotelRoomService],
