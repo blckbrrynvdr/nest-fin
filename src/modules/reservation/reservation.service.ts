@@ -1,6 +1,6 @@
 import {Injectable} from "@nestjs/common";
 import {IReservation, ReservationDto, ReservationSearchOptions} from "./interfaces/reservation.interface";
-import {ReservationDocument, ReservationModel} from "./models/reservation.model";
+import {ReservationDocument, Reservation} from "./models/reservation";
 import {Model, Promise, Types} from "mongoose";
 import {ID} from "../../share/types/id.type";
 import {InjectModel} from "@nestjs/mongoose";
@@ -8,10 +8,10 @@ import {InjectModel} from "@nestjs/mongoose";
 @Injectable()
 export class ReservationService implements IReservation {
     constructor(
-        @InjectModel(ReservationModel.name) private reservationModel: Model<ReservationDocument>,
+        @InjectModel(Reservation.name) private reservationModel: Model<ReservationDocument>,
     ) {
     }
-    async addReservation(data: ReservationDto): Promise<ReservationModel> {
+    async addReservation(data: ReservationDto): Promise<Reservation> {
         const reserved = await this.getReservations(data);
         if (reserved.length > 0) {
             return;
@@ -23,7 +23,7 @@ export class ReservationService implements IReservation {
         return createdReservation.save();
     }
 
-    getReservations(filter: ReservationSearchOptions): Promise<Array<ReservationModel>> {
+    getReservations(filter: ReservationSearchOptions): Promise<Array<Reservation>> {
         return this.reservationModel.find({
             userId: filter.userId,
             dateStart: { $gte: filter.dateStart },

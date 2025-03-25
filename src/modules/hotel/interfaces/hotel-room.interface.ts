@@ -1,5 +1,5 @@
 import {ID} from "../../../share/types/id.type";
-import {HotelRoomModel} from "../models/hotel-room.model";
+import {HotelRoom} from "../models/hotel.room";
 
 export interface ISearchRoomsParams {
     limit: number;
@@ -9,8 +9,8 @@ export interface ISearchRoomsParams {
 }
 
 export interface IHotelRoomService {
-    create(data: Partial<HotelRoomModel>): Promise<HotelRoomModel>;
-    findById(id: ID): Promise<HotelRoomModel>;
-    search(params: ISearchRoomsParams): Promise<HotelRoomModel[]>;
-    update(id: ID, data: Partial<HotelRoomModel>): Promise<HotelRoomModel>;
+    create(data: Partial<HotelRoom>): Promise<HotelRoom>;
+    findById(id: ID): Promise<HotelRoom>;
+    search(params: ISearchRoomsParams): Promise<HotelRoom[]>;
+    update(id: ID, data: Partial<HotelRoom>): Promise<HotelRoom>;
 }

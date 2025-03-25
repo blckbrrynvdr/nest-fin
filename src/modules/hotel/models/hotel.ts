@@ -2,10 +2,10 @@ import {Prop, Schema, SchemaFactory} from "@nestjs/mongoose";
 import {Document, Types} from "mongoose";
 import {ID} from "../../../share/types/id.type";
 
-export type THotelDocument = HotelModel & Document;
+export type THotelDocument = Hotel & Document;
 
 @Schema()
-export class HotelModel {
+export class Hotel {
     @Prop({required: true, unique: true, type: Types.ObjectId })
     _id: ID;
 
@@ -22,4 +22,4 @@ export class HotelModel {
 	updatedAt: Date;
 }
 
-export const HotelSchema = SchemaFactory.createForClass(HotelModel);
+export const HotelSchema = SchemaFactory.createForClass(Hotel);

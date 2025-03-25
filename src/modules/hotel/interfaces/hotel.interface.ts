@@ -1,5 +1,5 @@
 import {ID} from "../../../share/types/id.type";
-import {HotelModel} from "../models/hotel.model";
+import {Hotel} from "../models/hotel";
 
 export interface ICreateHotelParams {
     title: string;
@@ -18,8 +18,8 @@ export interface IUpdateHotelParams {
 }
 
 export interface IHotelService {
-    create(data: Partial<HotelModel>): Promise<HotelModel>;
-    findById(id: ID): Promise<HotelModel>;
-    search(params: ISearchHotelParams): Promise<HotelModel[]>;
-    update(id: ID, data: IUpdateHotelParams): Promise<HotelModel>;
+    create(data: Partial<Hotel>): Promise<Hotel>;
+    findById(id: ID): Promise<Hotel>;
+    search(params: ISearchHotelParams): Promise<Hotel[]>;
+    update(id: ID, data: IUpdateHotelParams): Promise<Hotel>;
 }
