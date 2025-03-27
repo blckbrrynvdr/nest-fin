@@ -10,7 +10,6 @@ import {Module} from "@nestjs/common";
         MongooseModule.forFeature([{name: HotelModel.name, schema: HotelSchema}]),
         MongooseModule.forFeature([{name: HotelRoomModel.name, schema: HotelRoomSchema}]),
     ],
-    controllers: [],
     providers: [HotelService, HotelRoomService],
     exports: [HotelService, HotelRoomService],
 })

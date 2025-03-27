@@ -1,11 +1,6 @@
 import {ID} from "../../../../share/types/id.type";
 import {HotelModel} from "../models/hotel.model";
 
-export interface ICreateHotelParams {
-    title: string;
-    description?: string;
-}
-
 export interface ISearchHotelParams {
     limit: number;
     offset: number;
