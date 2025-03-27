@@ -5,7 +5,7 @@ import {SupportRequest, SupportRequestDocument} from './models/support-request.m
 import {Message, MessageDocument} from './models/message.model';
 import {EventEmitter} from 'events';
 import {GetChatListParams, ISupportRequestService, SendMessageDto} from "./interfaces/support.interface";
-import {ID} from "../../share/types/id.type";
+import {ID} from "../../../share/types/id.type";
 
 const eventEmitter = new EventEmitter();
 

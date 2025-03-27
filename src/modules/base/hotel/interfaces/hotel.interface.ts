@@ -1,4 +1,4 @@
-import {ID} from "../../../share/types/id.type";
+import {ID} from "../../../../share/types/id.type";
 import {HotelModel} from "../models/hotel.model";
 
 export interface ICreateHotelParams {

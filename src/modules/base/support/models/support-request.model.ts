@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import {Document, Types} from 'mongoose';
 import { Message } from './message.model';
-import {ID} from "../../../share/types/id.type";
+import {ID} from "../../../../share/types/id.type";
 
 export type SupportRequestDocument = SupportRequest & Document;
 

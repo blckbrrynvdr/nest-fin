@@ -1,5 +1,5 @@
 import {UserModel} from "../models/user.model";
-import {ID} from "../../../share/types/id.type";
+import {ID} from "../../../../share/types/id.type";
 
 export interface SearchUserParams {
     limit: number;

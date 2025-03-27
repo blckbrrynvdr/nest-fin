@@ -1,4 +1,4 @@
-import {ID} from "../../../share/types/id.type";
+import {ID} from "../../../../share/types/id.type";
 import {HotelRoomModel} from "../models/hotel-room.model";
 
 export interface ISearchRoomsParams {

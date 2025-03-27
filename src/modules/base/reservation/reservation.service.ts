@@ -1,8 +1,8 @@
 import {Injectable} from "@nestjs/common";
 import {IReservation, ReservationDto, ReservationSearchOptions} from "./interfaces/reservation.interface";
 import {ReservationDocument, ReservationModel} from "./models/reservation.model";
-import {Model, Promise, Types} from "mongoose";
-import {ID} from "../../share/types/id.type";
+import {Model, Types} from "mongoose";
+import {ID} from "../../../share/types/id.type";
 import {InjectModel} from "@nestjs/mongoose";
 
 @Injectable()

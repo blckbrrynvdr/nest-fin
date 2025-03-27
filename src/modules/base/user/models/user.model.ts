@@ -1,7 +1,7 @@
 import {Prop, Schema, SchemaFactory} from '@nestjs/mongoose';
 import {Document, Types} from 'mongoose';
 import {TRole} from "../types/user.type";
-import {ID} from "../../../share/types/id.type";
+import {ID} from "../../../../share/types/id.type";
 
 export type UserDocument = UserModel & Document;
 

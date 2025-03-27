@@ -2,8 +2,8 @@ import {Injectable} from "@nestjs/common";
 import {IHotelService, ISearchHotelParams, IUpdateHotelParams} from "./interfaces/hotel.interface";
 import {HotelModel, THotelDocument} from "./models/hotel.model";
 import {Model} from "mongoose";
-import {ID} from "../../share/types/id.type";
 import {InjectModel} from "@nestjs/mongoose";
+import {ID} from "../../../share/types/id.type";
 
 @Injectable()
 export class HotelService implements IHotelService {

@@ -1,4 +1,4 @@
-import {ID} from "../../../share/types/id.type";
+import {ID} from "../../../../share/types/id.type";
 import {ReservationModel} from "../models/reservation.model";
 
 export interface ReservationDto {

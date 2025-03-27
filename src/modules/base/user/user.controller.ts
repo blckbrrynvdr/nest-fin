@@ -1,9 +1,8 @@
-import { Controller, Get, Post, Body, Param, Query } from '@nestjs/common';
-import { UsersService } from './user.service';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
-import { SearchUserParams } from './interfaces/user.interface';
-import {ID} from "../../share/types/id.type";
+import {Body, Controller, Get, Param, Post, Query} from '@nestjs/common';
+import {UsersService} from './user.service';
+import {CreateUserDto} from './dto/create-user.dto';
+import {SearchUserParams} from './interfaces/user.interface';
+import {ID} from "../../../share/types/id.type";
 
 @Controller('users')
 export class UsersController {

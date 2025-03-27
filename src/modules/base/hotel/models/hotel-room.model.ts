@@ -1,5 +1,5 @@
 import {Prop, Schema, SchemaFactory} from "@nestjs/mongoose";
-import {ID} from "../../../share/types/id.type";
+import {ID} from "../../../../share/types/id.type";
 import {Document, Types} from "mongoose";
 
 export type IHotelRoomDocument = HotelRoomModel & Document;

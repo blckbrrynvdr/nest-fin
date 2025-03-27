@@ -5,10 +5,10 @@ import {
     MarkMessagesAsReadDto
 } from "./interfaces/support.interface";
 import {InjectModel} from "@nestjs/mongoose";
-import {Model, Promise} from "mongoose";
+import {Model} from "mongoose";
 import {SupportRequest, SupportRequestDocument} from "./models/support-request.model";
 import {MessageDocument} from "./models/message.model";
-import {ID} from "../../share/types/id.type";
+import {ID} from "../../../share/types/id.type";
 
 @Injectable()
 export class SupportRequestClientService implements ISupportRequestClientService {

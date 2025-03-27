@@ -4,7 +4,6 @@ import {ID} from "src/share/types/id.type";
 import {HotelRoomModel, IHotelRoomDocument} from "./models/hotel-room.model";
 import {InjectModel} from "@nestjs/mongoose";
 import {Model} from "mongoose";
-import {THotelDocument} from "./models/hotel.model";
 
 @Injectable()
 export class HotelRoomService implements IHotelRoomService {

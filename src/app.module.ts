@@ -2,10 +2,10 @@ import { Module } from '@nestjs/common';
 import {MongooseModule} from "@nestjs/mongoose";
 import {ConfigModule} from "@nestjs/config";
 import { BooksModule } from './books/books.module';
-import {UsersModule} from "./modules/user/user.module";
-import {HotelModel} from "./modules/hotel/models/hotel.model";
-import {ReservationModule} from "./modules/reservation/reservation.module";
-import {SupportModule} from "./modules/support/support.module";
+import {UsersModule} from "./modules/base/user/user.module";
+import {HotelModel} from "./modules/base/hotel/models/hotel.model";
+import {SupportModule} from "./modules/base/support/support.module";
+import {ReservationModule} from "./modules/base/reservation/reservation.module";
 
 
 @Module({
