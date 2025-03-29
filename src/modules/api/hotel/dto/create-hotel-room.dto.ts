@@ -11,8 +11,7 @@ export class CreateHotelRoomDto {
     hotelId: string;
 
     @IsArray()
-    @IsString({ each: true })
-    images: string[];
+    images: Express.Multer.File[];
 }
 
 export class CreateHotelRoomResponseDto {
@@ -25,4 +24,4 @@ export class CreateHotelRoomResponseDto {
         title: string;
         description: string;
     };
-} 
+}

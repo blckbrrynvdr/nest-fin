@@ -1,28 +1,23 @@
 import {Injectable} from '@nestjs/common';
-import {UserModel, UserDocument} from './models/user.model';
-import {CreateUserDto} from './dto/create-user.dto';
+import {User, UserDocument} from './models/user';
 import {IUserService, SearchUserParams} from "./interfaces/user.interface";
 import {ID} from "../../../share/types/id.type";
-import * as bcrypt from 'bcryptjs';
 import {InjectModel} from "@nestjs/mongoose";
-import mongoose, {Model, Types} from "mongoose";
+import {Model, Types} from "mongoose";
 
 
 @Injectable()
 export class UsersService implements IUserService {
     constructor(
-        @InjectModel(UserModel.name) private userModel: Model<UserDocument>,
+        @InjectModel(User.name) private userModel: Model<UserDocument>,
     ) {
     }
 
-    async create(data: CreateUserDto): Promise<UserDocument> {
-        console.log('userService create data', data)
-        const userData: Partial<UserModel> = {
+    async create(data: Partial<User>): Promise<UserDocument> {
+        const userData: Partial<User> = {
             ...data,
             _id: new Types.ObjectId().toString(),
-            passwordHash: await this.generatePasswordHash(data.password),
         };
-        console.log('userService create userData', userData)
         const createdUser = new this.userModel(userData);
         return createdUser.save();
 
@@ -48,10 +43,5 @@ export class UsersService implements IUserService {
             query['contactPhone'] = {$regex: searchParams.contactPhone, $options: 'i'};
         }
         return this.userModel.find(query).exec();
-    }
-
-    private async generatePasswordHash(password: string) {
-        const salt = 10;
-        return await bcrypt.hash(password, salt);
     }
 }

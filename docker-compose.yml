@@ -27,5 +27,5 @@ services:
     environment:
       - PORT=3002
       - URL_DB=mongodb://root:example@mongo:27017/
-    command: npm run dev
+    command: npm run start:dev
 

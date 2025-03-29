@@ -39,7 +39,7 @@ export class SupportRequestClientService implements ISupportRequestClientService
 
         await this.messageModel.updateMany({
             supportRequest,
-            author: { $ne: user }, // Сообщения от сотрудников поддержки
+            author: { $ne: user }, // Сообщения от сотрудников поддержки?
             sentAt: { $lte: createdBefore },
             readAt: null
         }, {

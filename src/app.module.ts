@@ -6,19 +6,17 @@ import {UsersModule} from "./modules/base/user/user.module";
 import {SupportModule} from "./modules/base/support/support.module";
 import {ReservationModule} from "./modules/base/reservation/reservation.module";
 import {HotelApiModule} from "./modules/api/hotel/hotel.module";
-import {HotelModel} from "./modules/base/hotel/models/hotel.model";
+import {AuthModule} from "./modules/api/auth/auth.module";
+import {ReservationApiModule} from "./modules/api/reservation/reservation.module";
 
 
 @Module({
   imports: [
       ConfigModule.forRoot(),
       MongooseModule.forRoot(process.env.URL_DB),
-      BooksModule,
-      UsersModule,
-      // HotelModel,
-      ReservationModule,
-      SupportModule,
       HotelApiModule,
+      ReservationApiModule,
+      AuthModule,
   ],
   controllers: [],
   providers: [],

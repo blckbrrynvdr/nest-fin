@@ -112,8 +112,7 @@ export class HotelController {
         @UploadedFiles() files: Express.Multer.File[]
     ): Promise<UpdateHotelRoomResponseDto> {
         const { description, hotelId, isEnabled, images: existingImages = [] } = updateHotelRoomDto;
-        
-        // Объединяем существующие изображения с новыми
+
         const newImages = files.map(file => file.path);
         const allImages = [...existingImages, ...newImages];
 
