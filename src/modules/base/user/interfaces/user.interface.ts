@@ -1,4 +1,4 @@
-import {UserModel} from "../models/user.model";
+import {User} from "../models/user";
 import {ID} from "../../../../share/types/id.type";
 
 export interface SearchUserParams {
@@ -9,8 +9,8 @@ export interface SearchUserParams {
     contactPhone: string;
 }
 export interface IUserService {
-    create(data: Partial<UserModel>): Promise<UserModel>;
-    findById(id: ID): Promise<UserModel>;
-    findByEmail(email: string): Promise<UserModel>;
-    findAll(params: SearchUserParams): Promise<UserModel[]>;
+    create(data: Partial<User>): Promise<User>;
+    findById(id: ID): Promise<User>;
+    findByEmail(email: string): Promise<User>;
+    findAll(params: SearchUserParams): Promise<User[]>;
 }
