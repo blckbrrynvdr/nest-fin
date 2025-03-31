@@ -25,7 +25,15 @@ export class SupportRequestService implements ISupportRequestService {
             query.user = params.user;
         }
 
-        return this.supportRequestModel.find(query).exec();
+        const limit = params.limit || 10;
+        const offset = params.offset || 0;
+
+        return this.supportRequestModel
+            .find(query)
+            .sort({ createdAt: -1 })
+            .skip(offset)
+            .limit(limit)
+            .exec();
     }
 
     async getMessages(supportRequest: ID): Promise<Message[]> {

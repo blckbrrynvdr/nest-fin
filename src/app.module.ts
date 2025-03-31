@@ -5,6 +5,7 @@ import {UsersApiModule} from "./modules/api/users/users.module";
 import {HotelApiModule} from "./modules/api/hotel/hotel.module";
 import {AuthModule} from "./modules/api/auth/auth.module";
 import {ReservationApiModule} from "./modules/api/reservation/reservation.module";
+import {SupportApiModule} from "./modules/api/support/support.module";
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import {ReservationApiModule} from "./modules/api/reservation/reservation.module
       ReservationApiModule,
       AuthModule,
       UsersApiModule,
+      SupportApiModule,
   ],
   controllers: [],
   providers: [],

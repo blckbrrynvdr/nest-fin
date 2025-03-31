@@ -12,6 +12,7 @@ export interface SendMessageDto {
     supportRequest: ID;
     text: string;
 }
+
 export interface MarkMessagesAsReadDto {
     user: ID;
     supportRequest: ID;
@@ -21,6 +22,8 @@ export interface MarkMessagesAsReadDto {
 export interface GetChatListParams {
     user: ID | null;
     isActive: boolean;
+    limit?: number;
+    offset?: number;
 }
 
 export interface ISupportRequestService {
