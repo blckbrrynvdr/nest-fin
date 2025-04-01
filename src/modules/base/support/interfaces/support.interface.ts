@@ -19,6 +19,8 @@ export interface MarkMessagesAsReadDto {
     createdBefore: Date;
 }
 
+// по ТЗ из 1 раздела ограничений нет, но в 2 разделе они указаны как параметры запроса
+// поэтому я добавил их сюда
 export interface GetChatListParams {
     user: ID | null;
     isActive: boolean;

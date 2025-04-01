@@ -24,7 +24,8 @@ export class SupportRequestService implements ISupportRequestService {
         if (params.user) {
             query.user = params.user;
         }
-
+        // по ТЗ из 1 раздела ограничений нет, но в 2 разделе они указаны как параметры запроса
+        // поэтому я добавил их сюда
         const limit = params.limit || 10;
         const offset = params.offset || 0;
 
