@@ -12,6 +12,7 @@ import {UpdateHotelDto, UpdateHotelResponseDto} from "./dto/update-hotel.dto";
 import {CreateHotelRoomDto, CreateHotelRoomResponseDto} from "./dto/create-hotel-room.dto";
 import {UpdateHotelRoomDto, UpdateHotelRoomResponseDto} from "./dto/update-hotel-room.dto";
 import {FilesInterceptor} from "@nestjs/platform-express";
+import { Types } from "mongoose";
 
 @Controller(API_PREFIX)
 @UseGuards(AccessGuard)
@@ -29,7 +30,7 @@ export class HotelController {
         const searchParams = {
             limit,
             offset,
-            hotel,
+            hotel: hotel as ID,
             isEnabled: true
         };
 

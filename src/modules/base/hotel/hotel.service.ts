@@ -28,7 +28,18 @@ export class HotelService implements IHotelService {
     }
 
     search(params: ISearchHotelParams): Promise<HotelModel[]> {
-        return this.hotelModel.find({ params }).exec();
+        const { limit, offset, title } = params;
+        
+        const filter: any = {};
+        if (title) {
+            filter.title = title;
+        }
+        
+        return this.hotelModel
+            .find(filter)
+            .skip(offset)
+            .limit(limit)
+            .exec();
     }
 
     update(id: ID, data: IUpdateHotelParams): Promise<HotelModel> {

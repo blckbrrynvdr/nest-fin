@@ -29,13 +29,21 @@ export class HotelRoomService implements IHotelRoomService {
     }
 
     search(params: ISearchRoomsParams): Promise<HotelRoomModel[]> {
-        const modifiedParams = params;
-        if (modifiedParams.isEnabled === undefined) {
-            delete modifiedParams.isEnabled;
+        const { limit, offset, hotel, isEnabled } = params;
+        
+        const filter: any = {
+            hotel: hotel
+        };
+        
+        if (isEnabled !== undefined) {
+            filter.isEnabled = isEnabled;
         }
-        console.log('hotel-room.service params', params);
-        console.log('hotel-room.service modifiedParams', modifiedParams);
-        return this.hotelRoomModel.find(modifiedParams).exec();
+        
+        return this.hotelRoomModel
+            .find(filter)
+            .skip(offset)
+            .limit(limit)
+            .exec();
     }
 
     update(id: ID, data: Partial<HotelRoomModel>): Promise<HotelRoomModel> {
