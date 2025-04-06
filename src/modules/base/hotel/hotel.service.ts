@@ -1,7 +1,7 @@
 import {Injectable} from "@nestjs/common";
 import {IHotelService, ISearchHotelParams, IUpdateHotelParams} from "./interfaces/hotel.interface";
 import {HotelModel, THotelDocument} from "./models/hotel.model";
-import {Model} from "mongoose";
+import {Model, Types} from "mongoose";
 import {InjectModel} from "@nestjs/mongoose";
 import {ID} from "../../../share/types/id.type";
 
@@ -12,7 +12,14 @@ export class HotelService implements IHotelService {
     ) {
     }
     create(data: Partial<HotelModel>): Promise<HotelModel> {
-        const createdHotel = new this.hotelModel(data);
+        const date = Date.now();
+        const saveData = {
+            ...data,
+            _id: new Types.ObjectId().toString(),
+            createdAt: date,
+            updatedAt: date,
+        }
+        const createdHotel = new this.hotelModel(saveData);
         return createdHotel.save();
     }
 

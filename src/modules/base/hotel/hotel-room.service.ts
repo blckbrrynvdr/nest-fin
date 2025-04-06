@@ -3,7 +3,7 @@ import {IHotelRoomService, ISearchRoomsParams} from "./interfaces/hotel-room.int
 import {ID} from "src/share/types/id.type";
 import {HotelRoomModel, IHotelRoomDocument} from "./models/hotel-room.model";
 import {InjectModel} from "@nestjs/mongoose";
-import {Model} from "mongoose";
+import {Model, Types} from "mongoose";
 
 @Injectable()
 export class HotelRoomService implements IHotelRoomService {
@@ -13,7 +13,14 @@ export class HotelRoomService implements IHotelRoomService {
     }
 
     create(data: Partial<HotelRoomModel>): Promise<HotelRoomModel> {
-        const createdRoom = new this.hotelRoomModel(data);
+        const date = Date.now();
+        const saveData = {
+            ...data,
+            _id: new Types.ObjectId().toString(),
+            createdAt: date,
+            updatedAt: date,
+        };
+        const createdRoom = new this.hotelRoomModel(saveData);
         return createdRoom.save();
     }
 
@@ -26,8 +33,9 @@ export class HotelRoomService implements IHotelRoomService {
         if (modifiedParams.isEnabled === undefined) {
             delete modifiedParams.isEnabled;
         }
-
-        return this.hotelRoomModel.find({ modifiedParams }).exec();
+        console.log('hotel-room.service params', params);
+        console.log('hotel-room.service modifiedParams', modifiedParams);
+        return this.hotelRoomModel.find(modifiedParams).exec();
     }
 
     update(id: ID, data: Partial<HotelRoomModel>): Promise<HotelRoomModel> {

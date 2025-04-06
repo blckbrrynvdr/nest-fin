@@ -4,6 +4,10 @@ import { ID } from '../../../../share/types/id.type';
 export class CreateHotelRoomDto {
     @IsString()
     @IsNotEmpty()
+    title: string;
+
+    @IsString()
+    @IsNotEmpty()
     description: string;
 
     @IsString()
