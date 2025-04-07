@@ -28,11 +28,9 @@ export class SupportGateway implements OnGatewayInit {
         private readonly supportRequestService: SupportRequestService,
         private readonly usersService: UsersService
     ) {
-        console.log('server', this.server)
     }
 
     afterInit(server: any): any {
-        console.log('after init server', server)
     }
 
     @UseGuards(WsAuthenticatedGuard)

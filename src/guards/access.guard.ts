@@ -7,14 +7,12 @@ export class AccessGuard implements CanActivate {
         const request = context.switchToHttp().getRequest();
         const path = request.url;
         const user = request.user;
-        console.log('AccessGuard', user)
 
         if (path.startsWith('/api/common')) {
             return true;
         }
 
         if (!user) {
-            console.log('AccessGuard no auth')
             throw new UnauthorizedException();
         }
 

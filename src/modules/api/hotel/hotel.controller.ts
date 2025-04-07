@@ -26,7 +26,6 @@ export class HotelController {
     @Get('common/hotel-rooms')
     async searchRooms(@Query(new ValidationPipe({ transform: true })) query: SearchHotelRoomsDto): Promise<HotelRoomModel[]> {
         const { limit = 10, offset = 0, hotel } = query;
-        console.log('hotel.controller searchRooms hotel', hotel);
         const searchParams = {
             limit,
             offset,
@@ -81,8 +80,6 @@ export class HotelController {
     ): Promise<CreateHotelRoomResponseDto> {
         const { title, description, hotelId } = createHotelRoomDto;
         const images = files?.map(file => file.path);
-        console.log('createHotelRoom createHotelRoomDto', createHotelRoomDto)
-        console.log('createHotelRoom images', images)
         const hotelRoom = await this.hotelRoomService.create({
             title,
             description,
